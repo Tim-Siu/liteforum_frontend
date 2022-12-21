@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function PostCreate() {
     const [title, setTitle] = useState('');
@@ -8,6 +9,7 @@ function PostCreate() {
     const [users, setUsers] = useState([]);
     const [tagInput, setTagInput] = useState('');
     const [userInput, setUserInput] = useState('');
+    const navigate = useNavigate();
 
     const handleTagAdd = () => {
         setTags([...tags, tagInput]);
@@ -34,6 +36,7 @@ function PostCreate() {
         try {
             const response = await axios.post('http://localhost:3000/posts', postData);
             console.log(response);
+            navigate(`/posts/${response.data.id}`);
             
         } catch (error) {
             console.error(error);
