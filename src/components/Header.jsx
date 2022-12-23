@@ -1,7 +1,16 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+    useEffect(() => {
+        const token = localStorage.getItem('jwt');
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    });
+
     return (
 
         <div className="container">
@@ -18,9 +27,27 @@ const Header = () => {
                 </ul>
 
                 <div className="col-md-3 text-end">
-                    <Link to="/login">
-                        <button type="button" className="btn btn-outline-primary me-2">Login</button>
-                    </Link>
+                    {isAuthenticated ? (
+                        <Link to="/logout">
+                            <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                        </Link>
+                    ) : (
+                        <Link to="/login">
+                            <button type="button" className="btn btn-outline-primary me-2">Login</button>
+                        </Link>
+                    )}
+                    {/* <Link to="/Signup">
+                        <button type="button" className="btn btn-primary">Sign-up</button>
+                    </Link> */}
+                    {isAuthenticated ? (
+                        <Link to="/profile">
+                            <button type="button" className="btn btn-primary">Profile</button>
+                        </Link>
+                    ) : (
+                        <Link to="/signup">
+                            <button type="button" className="btn btn-primary">Sign-up</button>
+                        </Link>
+                    )}
                 </div>
             </header>
         </div>

@@ -19,13 +19,13 @@ const PostShow = (props) => {
         fetchData();
     }, []);
 
-    return(
-    <div>
-        <h2>{post.title}</h2>
-        <p>Body: {post.body}</p>
-        <p>Author: {users.map(user => (<span key={user.id}>{user.name};  </span>))}</p>
-        <p>Topic: {tags.map(tag => (<span key={tag.id}>{tag.name};  </span>))}</p>
-    </div>
+    return (
+        <div>
+            <h2>{post.title}</h2>
+            <p>Body: {post.body}</p>
+            <p>Author: {users.map(user => (<span key={user.id}>{user.name};  </span>))}</p>
+            <p>Topic: {tags.map(tag => (<span key={tag.id}>{tag.name};  </span>))}</p>
+        </div>
     )
 }
 
