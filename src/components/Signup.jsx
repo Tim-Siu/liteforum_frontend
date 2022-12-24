@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function Signup() {
     });
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const { username, email, password, password2 } = formData;
 
@@ -37,9 +39,15 @@ function Signup() {
                 if (res.data.token) {
                     localStorage.setItem('user_id', res.data.user_id);
                     localStorage.setItem('username', res.data.name);
-                    localStorage.setItem('jwt', res.data.token);
+                    localStorage.setItem('token', res.data.token);
+                    dispatch({
+                        type: 'LOGIN',
+                        token: res.data.token,
+                        user_id: res.data.user_id,
+                        username: res.data.name
+                    })
                 }
-                navigate(-1)
+                navigate('/posts')
             } catch (err) {
                 console.error(err.response.data);
             }

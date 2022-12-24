@@ -1,14 +1,28 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import store from '../store';
+import { useDispatch } from 'react-redux';
 
 const Logout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     useEffect(() => {
         localStorage.removeItem('user_id');
         localStorage.removeItem('username');
-        localStorage.removeItem('jwt');
-        navigate('/');
-    }, []);
+        localStorage.removeItem('token');
+        // store.dispatch({
+        //     type: 'LOGOUT',
+        //     token: null,
+        //     user_id: null,
+        //     username: null
+        // })
+        dispatch({
+            type: 'LOGOUT',
+            token: null,
+            user_id: null,
+            username: null
+        })
+    });
     return null;
 }
 

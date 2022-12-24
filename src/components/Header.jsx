@@ -1,15 +1,12 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-    useEffect(() => {
-        const token = localStorage.getItem('jwt');
-        if (token) {
-            setIsAuthenticated(true);
-        }
-    });
+    const token = useSelector(state => state.token);
+
 
     return (
 
@@ -27,7 +24,7 @@ const Header = () => {
                 </ul>
 
                 <div className="col-md-3 text-end">
-                    {isAuthenticated ? (
+                    {token ? (
                         <Link to="/logout">
                             <button type="button" className="btn btn-outline-primary me-2">Logout</button>
                         </Link>
@@ -39,7 +36,7 @@ const Header = () => {
                     {/* <Link to="/Signup">
                         <button type="button" className="btn btn-primary">Sign-up</button>
                     </Link> */}
-                    {isAuthenticated ? (
+                    {token ? (
                         <Link to="/profile">
                             <button type="button" className="btn btn-primary">Profile</button>
                         </Link>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function PostCreate() {
     const [title, setTitle] = useState('');
@@ -11,10 +13,22 @@ function PostCreate() {
     const [userInput, setUserInput] = useState('');
     const navigate = useNavigate();
 
+    const token = useSelector((state) => state.token);
+
+    useEffect(() => {
+        if (!token) {
+            navigate('/login');
+        }
+    }, [token, navigate]);
+
+
+
     const handleTagAdd = () => {
         setTags([...tags, tagInput]);
         setTagInput('');
     }
+
+
 
     // const handleUserAdd = () => {
     //     setUsers([...users, userInput]);
@@ -33,7 +47,11 @@ function PostCreate() {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/posts', postData);
+            const response = await axios.post('http://localhost:3000/posts', postData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             console.log(response);
             navigate(`/posts/${response.data.id}`);
 
