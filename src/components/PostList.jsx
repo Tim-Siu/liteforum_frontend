@@ -14,19 +14,6 @@ function PostList() {
     }, []);
 
     return (
-        // <ol>
-        //   {posts.map(post => (
-        //     <div>
-        //     <li key={post.id}>
-        //       <h2>{post.title}</h2>
-        //       <p>Tags: {post.tags.map(tag => tag.name).join(', ')}</p>
-        //       <p>Users: {post.users.map(user => user.name).join(', ')}</p>
-        //     </li>
-        //     <Link to={`/posts/${post.id}`}>Show</Link>
-        //     </div>
-
-        //   ))}
-        // </ol>
         <div className="container">
             <div className="list-group w-auto">
                 {posts.map(post => (
@@ -35,8 +22,8 @@ function PostList() {
                         <div className="d-flex gap-2 w-100 justify-content-between">
                             <div>
                                 <h6 className="mb-0">{post.title}</h6>
-                                <p className="mb-0 opacity-75">Tags: {post.tags.map(tag => tag).join(', ')}</p>
-                                <p className="mb-0 opacity-75">Arthur: {post.user_name}</p>
+                                <p className="mb-0 opacity-75">Tags: {post.tags.map(tag => tag.name).join(', ')}</p>
+                                <p className="mb-0 opacity-75">Arthur: {post.user.name}</p>
                             </div>
                             <small className="opacity-50 text-nowrap">{moment(post.created_at).format('LLL')}</small>
                         </div>

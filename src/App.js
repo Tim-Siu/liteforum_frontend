@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Logout from './components/Logout';
+import TagShow from './components/TagShow';
+import TagList from './components/TagList';
 const App = () => {
   return (
     <Provider store={store}>
@@ -24,6 +26,8 @@ const App = () => {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/logout' element={<Logout />} />
+          <Route exact path='/tags/:id' element={<TagShow />} />
+          <Route exact path='/tags' element={<TagList />} />
         </Routes>
         <Footer />
       </Router>

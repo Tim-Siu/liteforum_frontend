@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const PostShow = () => {
     const [post, setPost] = useState({});
@@ -35,25 +35,45 @@ const PostShow = () => {
 
     return (
         <div className="container">
+            <div className="list-group w-auto">
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 className="mb-0">{post.title}</h6>
+                            <p className="mb-0 opacity-75">Author: {user.name}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 className="mb-0">Body</h6>
+                            <p className="mb-0 opacity-75">{post.body}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 className="mb-0">Topic</h6> 
+                            <br/>
+                            {tags.map((tag) => (<Link to={`/tags/${tag.id}`} key={tag.id}>
+                                <button type="button" key={tag} className="btn btn-outline-secondary" style={{ marginLeft: '5px' }}>{tag.name}</button>
+                                </Link>))}
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 className="mb-0">Comments</h6>
+                            <p className="mb-0 opacity-75">{comments.map(comment => (<span key={comment.id}>{comment.body};  </span>))}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div className="card">
-            <div className="row">
-                <h2 className="col">{post.title}</h2>
-            </div>
-            <div className="row">
-                <p className="col">Body: {post.body}</p>
-            </div>
-            <div className="row">
-                <p className="col">Author: {user.name}</p>
-            </div>
-            <div className="row">
-                <p className="col">Topic: {tags.map(tag => (<span key={tag.id}>{tag.name};  </span>))}</p>
-            </div>
-            <div className="row">
-                <p className="col">Comments: {comments.map(comment => (<span key={comment.id}>{comment.body};  </span>))}</p>
-            </div>
-        </div>
-        </div>
 
     )
 }
