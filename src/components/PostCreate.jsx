@@ -22,32 +22,39 @@ const PostCreate = () => {
 
 
     const handleTagAdd = () => {
-        setTags([...tags, tagInput]);
-        setTagInput('');
+        if (tagInput === '') {
+            return;
+        } else {
+            setTags([...tags, tagInput]);
+            setTagInput('');
+        }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const postData = {
-            post: {
-                title,
-                body,
-                tags,
-            }
-        }
-
-        try {
-            const response = await axios.post('http://localhost:3000/posts', postData, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+        if (title === '' || body === '') {
+            return;
+        } else {
+            const postData = {
+                post: {
+                    title,
+                    body,
+                    tags,
                 }
-            });
-            console.log(response);
-            navigate(`/posts/${response.data.id}`);
+            }
 
-        } catch (error) {
-            console.error(error);
+            try {
+                const response = await axios.post('http://localhost:3000/posts', postData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log(response);
+                navigate(`/posts/${response.data.id}`);
+
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 
@@ -60,13 +67,13 @@ const PostCreate = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="titleInput" className="form-label"> Title</label>
-                    <input type="text" className="form-control" id="titleInput" value={title} onChange={(event) => setTitle(event.target.value)} />
+                    <input type="text" className="form-control" id="titleInput" value={title} onChange={(event) => setTitle(event.target.value)} required />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="bodyInput" className="form-label">Body</label>
 
-                    <textarea className="form-control" id="bodyInput" rows="3" value={body} onChange={(event) => setBody(event.target.value)}></textarea>
+                    <textarea className="form-control" id="bodyInput" rows="3" value={body} onChange={(event) => setBody(event.target.value)} required></textarea>
                 </div>
 
                 <div className="mb-3">

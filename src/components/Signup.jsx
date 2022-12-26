@@ -23,37 +23,48 @@ function Signup() {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if (password !== password2) {
-            console.error("Passwords don't match");
-            setError("Passwords don't match");
+        if (username === '') {
+            console.error("Username is required");
+            setError("Username is required");
+        } else if (email === '') {
+            console.error("Email is required");
+            setError("Email is required");
+        } else if (password === '') {
+            console.error("Password is required");
+            setError("Password is required");
         } else {
-            try {
-                const newUser = {
-                    user: {
-                        name: username,
-                        email: email,
-                        password: password
-                    }
-                };
-                console.log(newUser);
+            if (password !== password2) {
+                console.error("Passwords don't match");
+                setError("Passwords don't match");
+            } else {
+                try {
+                    const newUser = {
+                        user: {
+                            name: username,
+                            email: email,
+                            password: password
+                        }
+                    };
+                    console.log(newUser);
 
-                const res = await axios.post('http://localhost:3000/users', newUser);
-                console.log(res);
-                if (res.data.token) {
-                    localStorage.setItem('user_id', res.data.user_id);
-                    localStorage.setItem('username', res.data.name);
-                    localStorage.setItem('token', res.data.token);
-                    dispatch({
-                        type: 'LOGIN',
-                        token: res.data.token,
-                        user_id: res.data.user_id,
-                        username: res.data.name
-                    })
+                    const res = await axios.post('http://localhost:3000/users', newUser);
+                    console.log(res);
+                    if (res.data.token) {
+                        localStorage.setItem('user_id', res.data.user_id);
+                        localStorage.setItem('username', res.data.name);
+                        localStorage.setItem('token', res.data.token);
+                        dispatch({
+                            type: 'LOGIN',
+                            token: res.data.token,
+                            user_id: res.data.user_id,
+                            username: res.data.name
+                        })
+                    }
+                    navigate('/posts')
+                } catch (err) {
+                    console.error(err.response.data);
+                    setError(err.response.data);
                 }
-                navigate('/posts')
-            } catch (err) {
-                console.error(err.response.data);
-                setError(err.response.data);
             }
         }
     };

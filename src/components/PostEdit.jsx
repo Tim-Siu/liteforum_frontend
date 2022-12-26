@@ -24,8 +24,12 @@ const PostEdit = () => {
     }, []);
 
     const handleTagAdd = () => {
-        setTags([...tags, tagInput]);
-        setTagInput('');
+        if (tagInput === '') {
+            return;
+        } else {
+            setTags([...tags, tagInput]);
+            setTagInput('');
+        }
     }
 
     useEffect(() => {
@@ -46,23 +50,26 @@ const PostEdit = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const postData = {
-            post: {
-                title,
-                body,
-                tags,
+        if (title === '' || body === '') {
+            return;
+        } else {
+            const postData = {
+                post: {
+                    title,
+                    body,
+                    tags,
+                }
             }
-        }
 
-        try {
-            const response = await axios.put(`http://localhost:3000/posts/${id}`, postData, {
-                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-            });
-            console.log(response);
-            navigate(`/posts/${response.data.id}`);
-        } catch (error) {
-            console.error(error);
+            try {
+                const response = await axios.put(`http://localhost:3000/posts/${id}`, postData, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                });
+                console.log(response);
+                navigate(`/posts/${response.data.id}`);
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 
@@ -80,21 +87,21 @@ const PostEdit = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="titleInput" className="form-label"> Title</label>
-                    <input type="text" className="form-control" id="titleInput" value={title} onChange={(event) => setTitle(event.target.value)} />
+                    <input type="text" className="form-control" id="titleInput" value={title} onChange={(event) => setTitle(event.target.value)} required/>
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="bodyInput" className="form-label">Body</label>
-                    <textarea className="form-control" id="bodyInput" rows="3" value={body} onChange={(event) => setBody(event.target.value)}></textarea>
-                    <button type="button" className="btn btn-outline-danger" onClick={handleClearBody} style={{ marginLeft: '0px' , marginTop: '10px'}}>Clear Body</button>
+                    <textarea className="form-control" id="bodyInput" rows="3" value={body} onChange={(event) => setBody(event.target.value)} required></textarea>
+                    <button type="button" className="btn btn-outline-danger" onClick={handleClearBody} style={{ marginLeft: '0px', marginTop: '10px' }}>Clear Body</button>
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="tagInput" className="form-label">Tags</label>
                     <input type="text" className="form-control" id="tagInput" value={tagInput} onChange={(event) => setTagInput(event.target.value)} /><br />
-                    <button type="button" className="btn btn-outline-primary" onClick={handleTagAdd} style={{ marginLeft: '0px' , marginTop: '-12px'}} >Add Tag</button>
-                    <button type="button" className="btn btn-outline-danger" onClick={handleClearTags} style={{ marginLeft: '5px' , marginTop: '-12px'}}>Clear Tags</button><br/>
-                    {tags.map((tag) => (<button type="button" key={tag} className="btn btn-outline-secondary" style={{ marginRight: '5px' , marginTop: '10px'}} >{tag}</button>))}
+                    <button type="button" className="btn btn-outline-primary" onClick={handleTagAdd} style={{ marginLeft: '0px', marginTop: '-12px' }} >Add Tag</button>
+                    <button type="button" className="btn btn-outline-danger" onClick={handleClearTags} style={{ marginLeft: '5px', marginTop: '-12px' }}>Clear Tags</button><br />
+                    {tags.map((tag) => (<button type="button" key={tag} className="btn btn-outline-secondary" style={{ marginRight: '5px', marginTop: '10px' }} >{tag}</button>))}
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

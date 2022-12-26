@@ -19,37 +19,42 @@ const CommentCreate = ({ postId }) => {
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        const commentData = {
-            comment: {
-                body: body,
-                user_id: user_id,
-                post_id: postId
-            }
-        };
+        if (body === '') {
+            return;
+        } else {
 
-        try {
-            await axios.post('http://localhost:3000/comments', commentData, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setBody('');
-        }
-        catch (error) {
-            console.log(error);
+            const commentData = {
+                comment: {
+                    body: body,
+                    user_id: user_id,
+                    post_id: postId
+                }
+            };
+
+            try {
+                await axios.post('http://localhost:3000/comments', commentData, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setBody('');
+            }
+            catch (error) {
+                console.log(error);
+            }
         }
     };
     return (
         <div className="container">
             <form onSubmit={onSubmit}>
                 <div className="mb-3">
-                    <br/>
+                    <br />
                     <textarea
                         className="form-control"
                         id="body"
                         rows="3"
                         value={body}
-                        onChange={(e) => setBody(e.target.value)}
+                        onChange={(e) => setBody(e.target.value)} required
                     ></textarea>
-                 <div id="commentHelp" className="form-text">Refresh the page to see your comments.</div>
+                    <div id="commentHelp" className="form-text">Refresh the page to see your comments.</div>
 
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
