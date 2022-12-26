@@ -39,6 +39,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            <img src="//www.clustrmaps.com/map_v2.png?d=TMqWDN5f6_smnjmmUtn1rj2OVzZOwCN36G-Dn8cSyoI&cl=ffffff" style={{ borderRadius: '10%', display: 'block', margin: '18px auto 0' }} />
         </div>)
 }
 
