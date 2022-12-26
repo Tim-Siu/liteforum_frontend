@@ -12,13 +12,14 @@ import Signup from './components/Signup';
 import Logout from './components/Logout';
 import TagShow from './components/TagShow';
 import TagList from './components/TagList';
+import Home from './components/Home';
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <Header />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           {/* <Route path="/about" element={<About />} /> */}
           <Route exact path='/posts' element={<PostList />} />
           <Route exact path='/posts/:id' element={<PostShow />} />

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import CommentCreate from './CommentCreate';
 
 const PostShow = () => {
     const [post, setPost] = useState({});
@@ -40,6 +41,7 @@ const PostShow = () => {
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">{post.title}</h6>
+                            <br/>
                             <p className="mb-0 opacity-75">Author: {user.name}</p>
                         </div>
                     </div>
@@ -48,6 +50,7 @@ const PostShow = () => {
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Body</h6>
+                            <br/>
                             <p className="mb-0 opacity-75">{post.body}</p>
                         </div>
                     </div>
@@ -63,16 +66,32 @@ const PostShow = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <br/>
+            <div className="list-group w-auto">
                 <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Comments</h6>
-                            <p className="mb-0 opacity-75">{comments.map(comment => (<span key={comment.id}>{comment.body};  </span>))}</p>
+                            <br/>
+                            <div className="mb-0 opacity-75">{comments.map(comment => (<div key={comment.id}>{comment.user.name}: {comment.body}  </div>))}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                        <h6 className="mb-0">Set Comment</h6> 
+
+                        {token && <CommentCreate postId={ id }/>}
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
 
 
     )
