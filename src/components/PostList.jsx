@@ -11,7 +11,7 @@ const PostList = () => {
         axios.get('http://localhost:3000/posts')
             .then(res => setPosts(res.data))
             .catch(err => console.error(err));
-            console.log(posts);
+            // console.log(posts);
     }, []);
 
     return (

@@ -15,7 +15,7 @@ const Login = () => {
     event.preventDefault();
     axios.post('http://localhost:3000/login', { email, password })
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('username', res.data.name);

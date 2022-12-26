@@ -65,7 +65,7 @@ const PostEdit = () => {
                 const response = await axios.put(`http://localhost:3000/posts/${id}`, postData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
-                console.log(response);
+                // console.log(response);
                 navigate(`/posts/${response.data.id}`);
             } catch (error) {
                 console.error(error);

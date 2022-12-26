@@ -26,7 +26,7 @@ const TagShow = () => {
             setTag(result.data);
             setPosts(result.data.posts);
         };
-        console.log(posts)
+        // console.log(posts)
         fetchData();
     }, []);
 

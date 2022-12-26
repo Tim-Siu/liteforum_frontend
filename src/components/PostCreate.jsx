@@ -49,7 +49,7 @@ const PostCreate = () => {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                console.log(response);
+                // console.log(response);
                 navigate(`/posts/${response.data.id}`);
 
             } catch (error) {

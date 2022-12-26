@@ -45,10 +45,10 @@ function Signup() {
                             password: password
                         }
                     };
-                    console.log(newUser);
+                    // console.log(newUser);
 
                     const res = await axios.post('http://localhost:3000/users', newUser);
-                    console.log(res);
+                    // console.log(res);
                     if (res.data.token) {
                         localStorage.setItem('user_id', res.data.user_id);
                         localStorage.setItem('username', res.data.name);

@@ -38,7 +38,7 @@ const CommentCreate = ({ postId }) => {
                 setBody('');
             }
             catch (error) {
-                console.log(error);
+                // console.error(error);
             }
         }
     };
