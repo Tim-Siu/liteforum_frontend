@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     const token = useSelector(state => state.token);
+    const user_id = useSelector(state => state.user_id);
 
 
     return (
@@ -37,7 +38,7 @@ const Header = () => {
                         <button type="button" className="btn btn-primary">Sign-up</button>
                     </Link> */}
                     {token ? (
-                        <Link to="/profile">
+                        <Link to={{pathname: `/users/${user_id}`}}>
                             <button type="button" className="btn btn-primary">Profile</button>
                         </Link>
                     ) : (

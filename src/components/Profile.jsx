@@ -8,12 +8,12 @@ import { useParams } from 'react-router-dom';
 const Profile = () => {
     const [user, setUser] = useState({});
     const token = useSelector((state) => state.token);
-    const userid = useSelector((state) => state.userid);
+    const user_id = useSelector((state) => state.user_id);
     const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
-        if (!token || userid != id) {
+        if (!token || user_id != id) {
             navigate('/login');
         }
     }, [token, navigate]);
@@ -29,6 +29,9 @@ const Profile = () => {
     }, []);
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-3">
+        <p>test</p>
+    );
+};
+
+export default Profile;
+        

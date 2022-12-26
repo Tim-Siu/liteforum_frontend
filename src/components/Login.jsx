@@ -39,19 +39,19 @@ const Login = () => {
     <div className='container'>
 
       <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <div id="emailHelp" class="form-text">The email that you signed up with.</div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <div id="emailHelp" className="form-text">The email that you signed up with.</div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <div id="submitHelp" class="form-text">{error && <p>{error}</p>}</div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+          <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <div id="submitHelp" className="form-text">{error && <p>{error}</p>}</div>
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" diabled checked />
-          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          <input type="checkbox" className="form-check-input" id="exampleCheck1" diabled checked />
+          <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
         </div>
         <button type="submit" class="btn btn-primary">Log In</button>
 

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 const CommentCreate = ({ postId }) => {
     const [body, setBody] = useState('');
     const token = useSelector((state) => state.token);
-    const userid = useSelector((state) => state.userid);
+    const user_id = useSelector((state) => state.user_id);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const CommentCreate = ({ postId }) => {
         const commentData = {
             comment: {
                 body: body,
-                user_id: userid,
+                user_id: user_id,
                 post_id: postId
             }
         };

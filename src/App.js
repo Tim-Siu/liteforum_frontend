@@ -13,6 +13,7 @@ import Logout from './components/Logout';
 import TagShow from './components/TagShow';
 import TagList from './components/TagList';
 import Home from './components/Home';
+import Profile from './components/Profile';
 const App = () => {
   return (
     <Provider store={store}>
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path='/logout' element={<Logout />} />
           <Route exact path='/tags/:id' element={<TagShow />} />
           <Route exact path='/tags' element={<TagList />} />
+          <Route exact path='/users/:id' element={<Profile />} />
         </Routes>
         <Footer />
       </Router>
