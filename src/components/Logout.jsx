@@ -10,12 +10,6 @@ const Logout = () => {
         localStorage.removeItem('user_id');
         localStorage.removeItem('username');
         localStorage.removeItem('token');
-        // store.dispatch({
-        //     type: 'LOGOUT',
-        //     token: null,
-        //     user_id: null,
-        //     username: null
-        // })
         dispatch({
             type: 'LOGOUT',
             token: null,

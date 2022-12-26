@@ -15,6 +15,7 @@ import TagList from './components/TagList';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import PostEdit from './components/PostEdit';
+import About from './components/About';
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           <Route exact path='/posts' element={<PostList />} />
           <Route exact path='/posts/:id' element={<PostShow />} />
           <Route exact path='/posts/new' element={<PostCreate />} />
