@@ -26,17 +26,18 @@ const TagShow = () => {
             setTag(result.data);
             setPosts(result.data.posts);
         };
+        console.log(posts)
         fetchData();
     }, []);
 
     return (
         <div className="container">
             <div className="list-group w-auto">
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">{tag.name}</h6>
-                            <p className="mb-0 opacity-75">Post Count: {tag.post_count}</p>
+                            <p className="mb-0 opacity-75">Post Count: {posts.length}</p>
                         </div>
                     </div>
                 </div>
@@ -47,7 +48,7 @@ const TagShow = () => {
                             <div className="d-flex gap-2 w-100 justify-content-between">
                                 <div>
                                     <h6 className="mb-0">{post.title}</h6>
-                                    <p className="mb-0 opacity-75">Author: {post.author}</p>
+                                    {/* <p className="mb-0 opacity-75">Author: {post.user}</p> */}
                                 </div>
                             </div>
                         </Link>

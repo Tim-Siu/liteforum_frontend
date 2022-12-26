@@ -36,7 +36,7 @@ const TagList = () => {
                                 <h6 className="mb-0">{tag.name}</h6>
                                 <p className="mb-0 opacity-75">Post Count: {tag.post_count}</p>
                             </div>
-                            <small className="opacity-50 text-nowrap">{moment(tag.created_at).startOf('hour').fromNow()}</small>
+                            <small className="opacity-50 text-nowrap">{moment(tag.created_at).fromNow()}</small>
                             
                         </div>
                     </Link>

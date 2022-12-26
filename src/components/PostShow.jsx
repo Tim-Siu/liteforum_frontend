@@ -39,7 +39,7 @@ const PostShow = () => {
     return (
         <div className="container">
             <div className="list-group w-auto">
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">{post.title}</h6>
@@ -49,7 +49,7 @@ const PostShow = () => {
                         <small className="opacity-50 text-nowrap">{moment(post.created_at).startOf('hour').fromNow()}</small>
                     </div>
                 </div>
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             {/* <h6 className="mb-0">Body</h6>
@@ -59,7 +59,7 @@ const PostShow = () => {
                     </div>
                 </div>
                 {tags !== [] &&
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             {/* <h6 className="mb-0">Topic</h6>
@@ -74,7 +74,7 @@ const PostShow = () => {
             </div>
             <br />
             <div className="list-group w-auto">
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Comments</h6>
@@ -85,7 +85,7 @@ const PostShow = () => {
                         </div>
                     </div>
                 </div>
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Set Comment</h6>

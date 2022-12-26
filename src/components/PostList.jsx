@@ -11,6 +11,7 @@ const PostList = () => {
         axios.get('http://localhost:3000/posts')
             .then(res => setPosts(res.data))
             .catch(err => console.error(err));
+            console.log(posts);
     }, []);
 
     return (
@@ -25,7 +26,7 @@ const PostList = () => {
                                 <p className="mb-0 opacity-75">Tags: {post.tags.map(tag => tag.name).join(', ')}</p>
                                 <p className="mb-0 opacity-75">Arthur: {post.user.name}</p>
                             </div>
-                            <small className="opacity-50 text-nowrap">{moment(post.created_at).startOf('hour').fromNow()}</small>
+                            <small className="opacity-50 text-nowrap">{moment(post.created_at).fromNow()}</small>
                         </div>
                     </Link>
                 ))}

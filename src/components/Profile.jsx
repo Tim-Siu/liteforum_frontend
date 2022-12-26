@@ -114,7 +114,7 @@ const Profile = () => {
                         </div>
                     </div>
                     {comments.map(comment => (
-                        <div className="list-group-item list-group-item-action list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true">
+                        <div className="list-group-item list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true">
                             <li className="d-flex gap-2 w-100 justify-content-between">
                                 <div>
                                     <p className="mb-0 opacity-75">{comment.body}</p>
