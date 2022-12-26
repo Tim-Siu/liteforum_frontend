@@ -74,8 +74,8 @@ const Profile = () => {
                 <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
-                            <p className="mb-0 opacity-75">Post Count: {user.post_count}</p>
-                            <p className="mb-0 opacity-75">Comment Count: {user.comment_count}</p>
+                            <p className="mb-0 opacity-75">Post Count: {(posts.length)}</p>
+                            <p className="mb-0 opacity-75">Comment Count: {comments.length}</p>
                         </div>
                     </div>
                 </div>
