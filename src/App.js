@@ -14,6 +14,7 @@ import TagShow from './components/TagShow';
 import TagList from './components/TagList';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import PostEdit from './components/PostEdit';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path='/tags/:id' element={<TagShow />} />
           <Route exact path='/tags' element={<TagList />} />
           <Route exact path='/users/:id' element={<Profile />} />
+          <Route exact path='/posts/:id/edit' element={<PostEdit />} />
         </Routes>
         <Footer />
       </Router>

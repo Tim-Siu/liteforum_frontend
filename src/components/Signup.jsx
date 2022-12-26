@@ -11,6 +11,8 @@ function Signup() {
         password2: ''
     });
 
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ function Signup() {
         e.preventDefault();
         if (password !== password2) {
             console.error("Passwords don't match");
+            setError("Passwords don't match");
         } else {
             try {
                 const newUser = {
@@ -50,6 +53,7 @@ function Signup() {
                 navigate('/posts')
             } catch (err) {
                 console.error(err.response.data);
+                setError(err.response.data);
             }
         }
     };
@@ -93,6 +97,8 @@ function Signup() {
                         required
                         minLength="6"
                     />
+                    <div id="paawordHelp" className="form-text">Min length of 6 required.</div>
+
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password2" className="form-label">Confirm Password</label>
@@ -106,6 +112,8 @@ function Signup() {
                         required
                         minLength="6"
                     />
+                    <div id="submitHelp" className="form-text">{error && <p>{error}</p>}</div>
+
                 </div>
                 <button type="submit" className="btn btn-primary">Sign Up</button>
             </form>

@@ -20,11 +20,11 @@ const Header = () => {
                 </a>
 
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li>
-                    <li><Link to="/posts" className="nav-link px-2 link-dark">Post</Link></li>
-                    <li><Link to="/tags" className="nav-link px-2 link-dark">Tag</Link></li>
-                    <li><Link to="/posts/new" className="nav-link px-2 link-dark">CreatePost</Link></li>
-                    <li><Link to="/about" className="nav-link px-2 link-dark">About</Link></li>
+                    {/* <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li> */}
+                    <li><Link to="/posts" className="nav-link px-2 link-dark">Posts</Link></li>
+                    <li><Link to="/tags" className="nav-link px-2 link-dark">Tags</Link></li>
+                    <li><Link to="/posts/new" className="nav-link px-2 link-dark">Create</Link></li>
+                    <li><Link to="/about" className="nav-link px-2 link-secondary">About</Link></li>
                 </ul>
 
                 <div className="col-md-3 text-end">
