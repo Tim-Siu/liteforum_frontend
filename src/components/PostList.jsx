@@ -25,7 +25,7 @@ function PostList() {
                                 <p className="mb-0 opacity-75">Tags: {post.tags.map(tag => tag.name).join(', ')}</p>
                                 <p className="mb-0 opacity-75">Arthur: {post.user.name}</p>
                             </div>
-                            <small className="opacity-50 text-nowrap">{moment(post.created_at).format('LLL')}</small>
+                            <small className="opacity-50 text-nowrap">{moment(post.created_at).startOf('hour').fromNow()}</small>
                         </div>
                     </Link>
                 ))}
