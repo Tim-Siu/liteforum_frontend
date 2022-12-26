@@ -23,6 +23,7 @@ const Logout = () => {
             username: null
         })
     });
+    navigate('/posts');
     return null;
 }
 

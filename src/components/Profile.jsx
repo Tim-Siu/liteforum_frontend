@@ -4,12 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
     const [user, setUser] = useState({});
     const token = useSelector((state) => state.token);
     const user_id = useSelector((state) => state.user_id);
     const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+    const [comments, setComments] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -24,14 +27,102 @@ const Profile = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(result.data);
+            setPosts(result.data.posts);
+            setComments(result.data.comments);
         };
         fetchData();
     }, []);
 
+    const handleDeletePost = async (id) => {
+        await axios.delete(`http://localhost:3000/posts/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const newPosts = posts.filter((post) => post.id !== id);
+        setPosts(newPosts);
+    };
+
+    const handleDeleteComment = async (id) => {
+        await axios.delete(`http://localhost:3000/comments/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const newComments = comments.filter((comment) => comment.id !== id);
+        setComments(newComments);
+    };
+
+    const handleEditPost = (id) => {
+        navigate(`/posts/${id}/edit`);
+    };
+
     return (
-        <p>test</p>
+        <div className="container">
+            <div className="list-group w-auto">
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 className="mb-0">Profile</h6>
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <p className="mb-0 opacity-75">Name: {user.name}</p>
+                            <p className="mb-0 opacity-75">Email: {user.email}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <p className="mb-0 opacity-75">Post Count: {user.post_count}</p>
+                            <p className="mb-0 opacity-75">Comment Count: {user.comment_count}</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div className="list-group w-auto">
+                    <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <div className="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 className="mb-0">Posts</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {posts.map(post => (
+                        <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <div className="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 className="mb-0 opacity-75">{post.title}</h6>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+                <br />
+                <div className="list-group w-auto">
+                    <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                        <div className="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 className="mb-0">Comments</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {comments.map(comment => (
+                        <Link to={`/posts/${comment.post_id}`} key={comment.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <div className="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 className="mb-0">{comment.content}</h6>
+                                    <p className="mb-0 opacity-75">{comment.body}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+
     );
 };
 
 export default Profile;
-        
+

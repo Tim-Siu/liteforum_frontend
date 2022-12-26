@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link} from 'react-router-dom';
+import moment from 'moment';
 
 const TagList = () => {
     const [tags, setTags] = useState([]);
@@ -35,6 +36,8 @@ const TagList = () => {
                                 <h6 className="mb-0">{tag.name}</h6>
                                 <p className="mb-0 opacity-75">Post Count: {tag.post_count}</p>
                             </div>
+                            <small className="opacity-50 text-nowrap">{moment(tag.created_at).startOf('hour').fromNow()}</small>
+                            
                         </div>
                     </Link>
                 ))}

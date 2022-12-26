@@ -40,16 +40,19 @@ const TagShow = () => {
                         </div>
                     </div>
                 </div>
-                {posts.map(post => (
-                    <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                        <div className="d-flex gap-2 w-100 justify-content-between">
-                            <div>
-                                <h6 className="mb-0">{post.title}</h6>
-                                <p className="mb-0 opacity-75">Author: {post.author}</p>
+                <br />
+                <div className="list-group w-auto">
+                    {posts.map(post => (
+                        <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                            <div className="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 className="mb-0">{post.title}</h6>
+                                    <p className="mb-0 opacity-75">Author: {post.author}</p>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
-                ))}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
 
