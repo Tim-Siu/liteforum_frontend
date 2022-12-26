@@ -90,13 +90,17 @@ const Profile = () => {
                     </div>
                     {posts.map(post => (
                         <>
-                            <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                                <div className="d-flex gap-2 w-100 justify-content-between">
+                            <div to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-horizontal d-flex gap-3 py-3" aria-current="true">
+                                <li className="d-flex gap-2 w-100 justify-content-between">
                                     <div>
                                         <h6 className="mb-0 opacity-75">{post.title}</h6>
                                     </div>
-                                </div>
-                            </Link>
+                                </li>
+                                <li className="d-flex">
+                                    <button className="btn btn-outline-secondary" style={{ marginLeft: '5px' }} onClick={() => handleEditPost(post.id)}>Edit</button>
+                                    <button className="btn btn-outline-danger" style={{ marginLeft: '5px' }} onClick={() => handleDeletePost(post.id)}>Delete</button>
+                                </li>
+                            </div>
                         </>
                     ))}
                 </div>
@@ -117,7 +121,7 @@ const Profile = () => {
                                 </div>
                             </li>
                             <li className="d-flex">
-                                <button className="btn btn-danger" onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                                <button className="btn btn-outline-danger" style={{ marginLeft: '5px' }} onClick={() => handleDeleteComment(comment.id)}>Delete</button>
                             </li>
                         </div>
                     ))}

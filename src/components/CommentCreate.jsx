@@ -49,6 +49,8 @@ const CommentCreate = ({ postId }) => {
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                     ></textarea>
+                 <div id="commentHelp" className="form-text">Refresh the page to see your comments.</div>
+
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
