@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="col-md-3 text-end">
                     {token ? (
                         <Link to="/logout">
-                            <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                            <button type="button" className="btn btn-outline-secondary me-2">Logout</button>
                         </Link>
                     ) : (
                         <Link to="/login">
@@ -42,7 +42,7 @@ const Header = () => {
                     </Link> */}
                     {token ? (
                         <Link to={{ pathname: `/users/${user_id}` }}>
-                            <button type="button" className="btn btn-primary">Profile</button>
+                            <button type="button" className="btn btn-outline-primary">MyProfile</button>
                         </Link>
                     ) : (
                         <Link to="/signup">
