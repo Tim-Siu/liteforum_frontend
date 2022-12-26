@@ -14,7 +14,7 @@ const CommentCreate = ({ postId }) => {
         if (!token) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
     const onSubmit = async (event) => {
         event.preventDefault();

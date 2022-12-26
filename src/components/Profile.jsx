@@ -19,7 +19,7 @@ const Profile = () => {
         if (!token || user_id != id) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,14 +56,14 @@ const Profile = () => {
     return (
         <div className="container">
             <div className="list-group w-auto">
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Profile</h6>
                         </div>
                     </div>
                 </div>
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <p className="mb-0 opacity-75">Name: {user.name}</p>
@@ -71,7 +71,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <p className="mb-0 opacity-75">Post Count: {user.post_count}</p>
@@ -81,7 +81,7 @@ const Profile = () => {
                 </div>
                 <br />
                 <div className="list-group w-auto">
-                    <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                         <div className="d-flex gap-2 w-100 justify-content-between">
                             <div>
                                 <h6 className="mb-0">Posts</h6>
@@ -89,18 +89,20 @@ const Profile = () => {
                         </div>
                     </div>
                     {posts.map(post => (
-                        <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                            <div className="d-flex gap-2 w-100 justify-content-between">
-                                <div>
-                                    <h6 className="mb-0 opacity-75">{post.title}</h6>
+                        <>
+                            <Link to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                                <div className="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 className="mb-0 opacity-75">{post.title}</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </>
                     ))}
                 </div>
                 <br />
                 <div className="list-group w-auto">
-                    <div className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
                         <div className="d-flex gap-2 w-100 justify-content-between">
                             <div>
                                 <h6 className="mb-0">Comments</h6>
@@ -108,14 +110,16 @@ const Profile = () => {
                         </div>
                     </div>
                     {comments.map(comment => (
-                        <Link to={`/posts/${comment.post_id}`} key={comment.id} className="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                            <div className="d-flex gap-2 w-100 justify-content-between">
+                        <div className="list-group-item list-group-item-action list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true">
+                            <li className="d-flex gap-2 w-100 justify-content-between">
                                 <div>
-                                    <h6 className="mb-0">{comment.content}</h6>
                                     <p className="mb-0 opacity-75">{comment.body}</p>
                                 </div>
-                            </div>
-                        </Link>
+                            </li>
+                            <li className="d-flex">
+                                <button className="btn btn-danger" onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                            </li>
+                        </div>
                     ))}
                 </div>
             </div>

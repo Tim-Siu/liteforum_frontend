@@ -14,7 +14,7 @@ const TagList = () => {
         if (!token) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {

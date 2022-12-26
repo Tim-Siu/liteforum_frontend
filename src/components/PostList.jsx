@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-function PostList() {
+const PostList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {

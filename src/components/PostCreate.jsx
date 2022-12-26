@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-function PostCreate() {
+const PostCreate = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [tags, setTags] = useState([]);
@@ -19,7 +19,7 @@ function PostCreate() {
         if (!token) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
 
 

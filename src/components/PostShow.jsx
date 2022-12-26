@@ -14,12 +14,13 @@ const PostShow = () => {
     const navigate = useNavigate();
 
     const token = useSelector((state) => state.token);
+    const user_id = useSelector((state) => state.user_id);
 
     useEffect(() => {
         if (!token) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
     let { id } = useParams();
     useEffect(() => {

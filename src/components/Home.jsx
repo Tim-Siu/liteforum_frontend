@@ -4,7 +4,7 @@ const Home = () => {
     const navigate = useNavigate();
     useEffect(() => {
         navigate('/posts');
-    }, [navigate]);
+    }, []);
     return null;    
 }
 

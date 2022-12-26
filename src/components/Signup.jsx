@@ -55,51 +55,6 @@ function Signup() {
     };
 
     return (
-        // <form onSubmit={handleSubmit}>
-        //     <div>
-        //         <label htmlFor="username">Username</label>
-        //         <input
-        //             type="text"
-        //             name="username"
-        //             value={username}
-        //             onChange={handleChange}
-        //             required
-        //         />
-        //     </div>
-        //     <div>
-        //         <label htmlFor="email">Email</label>
-        //         <input
-        //             type="email"
-        //             name="email"
-        //             value={email}
-        //             onChange={handleChange}
-        //             required
-        //         />
-        //     </div>
-        //     <div>
-        //         <label htmlFor="password">Password</label>
-        //         <input
-        //             type="password"
-        //             name="password"
-        //             value={password}
-        //             onChange={handleChange}
-        //             required
-        //             minLength="6"
-        //         />
-        //     </div>
-        //     <div>
-        //         <label htmlFor="password2">Confirm Password</label>
-        //         <input
-        //             type="password"
-        //             name="password2"
-        //             value={password2}
-        //             onChange={handleChange}
-        //             required
-        //             minLength="6"
-        //         />
-        //     </div>
-        //     <button type="submit">Sign Up</button>
-        // </form>
         <div className="container">
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
