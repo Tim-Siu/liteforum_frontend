@@ -7,7 +7,7 @@ const PostList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/posts')
+        axios.get('http://api.xsy.science/posts')
             .then(res => setPosts(res.data))
             .catch(err => console.error(err));
             // console.log(posts);

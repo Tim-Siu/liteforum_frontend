@@ -47,7 +47,7 @@ function Signup() {
                     };
                     // console.log(newUser);
 
-                    const res = await axios.post('http://localhost:3000/users', newUser);
+                    const res = await axios.post('http://api.xsy.science/users', newUser);
                     // console.log(res);
                     if (res.data.token) {
                         localStorage.setItem('user_id', res.data.user_id);

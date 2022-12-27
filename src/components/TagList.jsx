@@ -18,7 +18,7 @@ const TagList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://localhost:3000/tags', {
+            const result = await axios.get('http://api.xsy.science/tags', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTags(result.data);

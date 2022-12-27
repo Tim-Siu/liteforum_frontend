@@ -22,7 +22,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:3000/users/${id}`, {
+            const result = await axios.get(`http://api.xsy.science/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(result.data);
@@ -33,7 +33,7 @@ const Profile = () => {
     }, []);
 
     const handleDeletePost = async (id) => {
-        await axios.delete(`http://localhost:3000/posts/${id}`, {
+        await axios.delete(`http://api.xsy.science/posts/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newPosts = posts.filter((post) => post.id !== id);
@@ -41,7 +41,7 @@ const Profile = () => {
     };
 
     const handleDeleteComment = async (id) => {
-        await axios.delete(`http://localhost:3000/comments/${id}`, {
+        await axios.delete(`http://api.xsy.science/comments/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newComments = comments.filter((comment) => comment.id !== id);

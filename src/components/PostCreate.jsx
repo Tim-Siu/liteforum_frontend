@@ -44,7 +44,7 @@ const PostCreate = () => {
             }
 
             try {
-                const response = await axios.post('http://localhost:3000/posts', postData, {
+                const response = await axios.post('http://api.xsy.science/posts', postData, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

@@ -31,7 +31,7 @@ const PostShow = () => {
     let { id } = useParams();
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:3000/posts/${id}`, {
+            const result = await axios.get(`http://api.xsy.science/posts/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setPost(result.data);
