@@ -7,7 +7,7 @@ const PostList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://18.179.112.150/posts')
+        axios.get('http://13.215.177.102/posts')
             .then(res => setPosts(res.data))
             .catch(err => console.error(err));
             // console.log(posts);

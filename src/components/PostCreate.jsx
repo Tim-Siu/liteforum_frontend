@@ -44,7 +44,7 @@ const PostCreate = () => {
             }
 
             try {
-                const response = await axios.post('http://18.179.112.150/posts', postData, {
+                const response = await axios.post('http://13.215.177.102/posts', postData, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

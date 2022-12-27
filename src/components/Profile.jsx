@@ -22,7 +22,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://18.179.112.150/users/${id}`, {
+            const result = await axios.get(`http://13.215.177.102/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(result.data);
@@ -33,7 +33,7 @@ const Profile = () => {
     }, []);
 
     const handleDeletePost = async (id) => {
-        await axios.delete(`http://18.179.112.150/posts/${id}`, {
+        await axios.delete(`http://13.215.177.102/posts/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newPosts = posts.filter((post) => post.id !== id);
@@ -41,7 +41,7 @@ const Profile = () => {
     };
 
     const handleDeleteComment = async (id) => {
-        await axios.delete(`http://18.179.112.150/comments/${id}`, {
+        await axios.delete(`http://13.215.177.102/comments/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newComments = comments.filter((comment) => comment.id !== id);

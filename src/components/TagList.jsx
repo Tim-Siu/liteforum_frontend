@@ -18,7 +18,7 @@ const TagList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://18.179.112.150/tags', {
+            const result = await axios.get('http://13.215.177.102/tags', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTags(result.data);

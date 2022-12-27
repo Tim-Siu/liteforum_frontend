@@ -31,7 +31,7 @@ const PostShow = () => {
     let { id } = useParams();
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://18.179.112.150/posts/${id}`, {
+            const result = await axios.get(`http://13.215.177.102/posts/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setPost(result.data);

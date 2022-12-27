@@ -47,7 +47,7 @@ function Signup() {
                     };
                     // console.log(newUser);
 
-                    const res = await axios.post('http://18.179.112.150/users', newUser);
+                    const res = await axios.post('http://13.215.177.102/users', newUser);
                     // console.log(res);
                     if (res.data.token) {
                         localStorage.setItem('user_id', res.data.user_id);
