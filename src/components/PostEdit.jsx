@@ -33,7 +33,7 @@ const PostEdit = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://api.xsy.science/posts/${id}`, {
+            const result = await axios.get(`http://18.179.112.150/posts/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setTitle(result.data.title);
@@ -64,7 +64,7 @@ const PostEdit = () => {
             }
 
             try {
-                const response = await axios.put(`http://api.xsy.science/posts/${id}`, postData, {
+                const response = await axios.put(`http://18.179.112.150/posts/${id}`, postData, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 // console.log(response);

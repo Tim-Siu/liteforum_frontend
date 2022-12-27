@@ -44,7 +44,7 @@ const PostCreate = () => {
             }
 
             try {
-                const response = await axios.post('http://api.xsy.science/posts', postData, {
+                const response = await axios.post('http://18.179.112.150/posts', postData, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
