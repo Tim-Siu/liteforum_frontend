@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 const Profile = () => {
     const [user, setUser] = useState({});
@@ -91,6 +90,7 @@ const Profile = () => {
                     {posts.map(post => (
                         <>
                             <div to={`/posts/${post.id}`} key={post.id} className="list-group-item list-group-horizontal d-flex gap-3 py-3" aria-current="true">
+                                {/* haven't figured out why the unique key error is still happening */}
                                 <li className="d-flex gap-2 w-100 justify-content-between">
                                     <div>
                                         <h6 className="mb-0 opacity-75">{post.title}</h6>
@@ -114,7 +114,7 @@ const Profile = () => {
                         </div>
                     </div>
                     {comments.map(comment => (
-                        <div className="list-group-item list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true">
+                        <div className="list-group-item list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true" key={comment.id}>
                             <li className="d-flex gap-2 w-100 justify-content-between">
                                 <div>
                                     <p className="mb-0 opacity-75">{comment.body}</p>

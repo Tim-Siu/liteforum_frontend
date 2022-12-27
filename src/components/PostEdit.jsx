@@ -10,7 +10,6 @@ const PostEdit = () => {
     const [body, setBody] = useState('');
     const [tags, setTags] = useState([]);
     const [tagInput, setTagInput] = useState('');
-    const [user_id_post, setUser_id_post] = useState('');
     const navigate = useNavigate();
 
     const token = useSelector((state) => state.token);
@@ -40,10 +39,13 @@ const PostEdit = () => {
             setTitle(result.data.title);
             setBody(result.data.body);
             setTags(result.data.tags.map((tag) => tag.name));
-            setUser_id_post(result.data.user.id);
-            // if (result.data.user.id !== user_id) {
-            //     navigate(`/posts/${id}`);
-            // }
+            if (result.data.user.id != user_id) {
+                // console.log(result.data.user.id)
+                // console.log(user_id)
+                // console.log(user_id == result.data.user.id)
+                //encoutered a bug where the user_id is a string and the result.data.user.id is a number, maybe it is time to switch to typescript
+                navigate(`/posts/${id}`);
+            }
         };
         fetchData();
     }, []);

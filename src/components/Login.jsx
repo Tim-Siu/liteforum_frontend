@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import store from '../store';
 import { useDispatch } from 'react-redux';
 
 const Login = () => {

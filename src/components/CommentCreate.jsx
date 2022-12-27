@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-const CommentCreate = ({ postId }) => {
+const CommentCreate = (props) => {
     const [body, setBody] = useState('');
     const token = useSelector((state) => state.token);
     const user_id = useSelector((state) => state.user_id);
@@ -22,20 +22,20 @@ const CommentCreate = ({ postId }) => {
         if (body === '') {
             return;
         } else {
-
+            // console.log(props.postId);
             const commentData = {
                 comment: {
                     body: body,
                     user_id: user_id,
-                    post_id: postId
+                    post_id: props.postId
                 }
             };
-
             try {
                 await axios.post('http://localhost:3000/comments', commentData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setBody('');
+                props.onUpdate(commentData.comment);
             }
             catch (error) {
                 // console.error(error);
@@ -54,15 +54,13 @@ const CommentCreate = ({ postId }) => {
                         value={body}
                         onChange={(e) => setBody(e.target.value)} required
                     ></textarea>
-                    <div id="commentHelp" className="form-text">Refresh the page to see your comments.</div>
+                    <div id="commentHelp" className="form-text">Please leave kind comments.</div>
 
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     );
-
-
 }
 
 export default CommentCreate;

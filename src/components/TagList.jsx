@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useNavigate, Link} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import moment from 'moment';
 
 const TagList = () => {
@@ -37,7 +37,6 @@ const TagList = () => {
                                 <p className="mb-0 opacity-75">Post Count: {tag.post_count}</p>
                             </div>
                             <small className="opacity-50 text-nowrap">{moment(tag.created_at).fromNow()}</small>
-                            
                         </div>
                     </Link>
                 ))}

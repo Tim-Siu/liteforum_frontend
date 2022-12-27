@@ -1,20 +1,16 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const image = require ('../img/logo192.png');
 
 const Header = () => {
-    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     const token = useSelector(state => state.token);
     const user_id = useSelector(state => state.user_id);
 
-
     return (
-
         <div className="container">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <a href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <a href="/about" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                     {/* <svg className="bi me-2" width="40" height="32" role="img" aria-label="liteForum"><use xlinkHref={image} /></svg> */}
                     <img src={image} alt="liteForum" width="40" height="32" />
                 </a>
@@ -37,9 +33,6 @@ const Header = () => {
                             <button type="button" className="btn btn-outline-primary me-2">Login</button>
                         </Link>
                     )}
-                    {/* <Link to="/Signup">
-                        <button type="button" className="btn btn-primary">Sign-up</button>
-                    </Link> */}
                     {token ? (
                         <Link to={{ pathname: `/users/${user_id}` }}>
                             <button type="button" className="btn btn-outline-primary">MyProfile</button>

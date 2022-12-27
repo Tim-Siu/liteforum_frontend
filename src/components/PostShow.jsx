@@ -16,6 +16,12 @@ const PostShow = () => {
     const token = useSelector((state) => state.token);
     const user_id = useSelector((state) => state.user_id);
 
+    const commentUpdate = (comment) => {
+        comment['user'] = { name: localStorage.getItem('username')}
+        comment['id'] = Date.now() //Temporary id for the comment until it is updated with the id from the backend
+        setComments([...comments, comment]);
+    };
+
     useEffect(() => {
         if (!token) {
             navigate('/login');
@@ -90,7 +96,7 @@ const PostShow = () => {
                         <div>
                             <h6 className="mb-0">Set Comment</h6>
 
-                            {token && <CommentCreate postId={id} />}
+                            {token && <CommentCreate postId={id} onUpdate={commentUpdate}/>}
                         </div>
                     </div>
                 </div>

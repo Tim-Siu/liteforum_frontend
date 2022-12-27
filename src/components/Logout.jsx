@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import store from '../store';
 import { useDispatch } from 'react-redux';
 
 const Logout = () => {
@@ -16,8 +15,8 @@ const Logout = () => {
             user_id: null,
             username: null
         })
+        navigate('/posts');
     }, []);
-    navigate('/posts');
     return null;
 }
 
