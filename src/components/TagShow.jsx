@@ -15,7 +15,7 @@ const TagShow = () => {
         if (!token) {
             navigate('/login');
         }
-    }, [token, navigate]);
+    }, []);
 
     let { id } = useParams();
     useEffect(() => {
