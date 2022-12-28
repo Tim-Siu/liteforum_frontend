@@ -20,7 +20,7 @@ const TagShow = () => {
     let { id } = useParams();
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://13.215.177.102/tags/${id}`, {
+            const result = await axios.get(`https://api.timxsy.com/tags/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setTag(result.data);

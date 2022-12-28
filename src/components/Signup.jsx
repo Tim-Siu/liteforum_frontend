@@ -47,7 +47,7 @@ function Signup() {
                     };
                     // console.log(newUser);
 
-                    const res = await axios.post('http://13.215.177.102/users', newUser);
+                    const res = await axios.post('https://api.timxsy.com/users', newUser);
                     // console.log(res);
                     if (res.data.token) {
                         localStorage.setItem('user_id', res.data.user_id);

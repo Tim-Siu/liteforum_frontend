@@ -31,7 +31,7 @@ const CommentCreate = (props) => {
                 }
             };
             try {
-                await axios.post('http://13.215.177.102/comments', commentData, {
+                await axios.post('https://api.timxsy.com/comments', commentData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setBody('');

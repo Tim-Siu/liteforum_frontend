@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    axios.post('http://13.215.177.102/login', { email, password })
+    axios.post('https://api.timxsy.com/login', { email, password })
       .then((res) => {
         // console.log(res.data)
         localStorage.setItem('token', res.data.token);

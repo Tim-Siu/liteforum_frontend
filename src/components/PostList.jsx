@@ -7,7 +7,7 @@ const PostList = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://13.215.177.102/posts')
+        axios.get('https://api.timxsy.com/posts')
             .then(res => setPosts(res.data))
             .catch(err => console.error(err));
             // console.log(posts);
