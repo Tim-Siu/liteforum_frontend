@@ -52,7 +52,7 @@ const PostShow = () => {
                             <br />
                             <p className="mb-0 opacity-75">Author: {user.name}</p>
                         </div>
-                        <small className="opacity-50 text-nowrap">{moment(post.created_at).startOf('hour').fromNow()}</small>
+                        <small className="opacity-50 text-nowrap">{moment(post.created_at).fromNow()}</small>
                     </div>
                 </div>
                 <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
