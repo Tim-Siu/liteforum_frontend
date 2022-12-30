@@ -86,6 +86,7 @@ const Profile = () => {
                                 <h6 className="mb-0">Posts</h6>
                             </div>
                         </div>
+                        {posts.length === 0 && <p className="mb-0 opacity-75">No posts yet</p>}
                     </div>
                     {posts.map(post => (
                         <>
@@ -112,6 +113,7 @@ const Profile = () => {
                                 <h6 className="mb-0">Comments</h6>
                             </div>
                         </div>
+                        {comments.length === 0 && <p className="mb-0 opacity-75">No comments yet</p>}
                     </div>
                     {comments.map(comment => (
                         <div className="list-group-item list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true" key={comment.id}>

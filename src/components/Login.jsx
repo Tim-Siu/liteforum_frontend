@@ -46,7 +46,7 @@ const Login = () => {
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
           <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-          <div id="submitHelp" className="form-text">{error && <p>{error}</p>}</div>
+          <div id="submitHelp" className="form-text" style={{color: "red"}}>{error && <p>{error}</p>}</div>
         </div>
         <div className="mb-3 form-check">
           <input type="checkbox" className="form-check-input" id="exampleCheck1" readOnly checked/>

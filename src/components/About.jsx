@@ -39,7 +39,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <img src="//www.clustrmaps.com/map_v2.png?d=TMqWDN5f6_smnjmmUtn1rj2OVzZOwCN36G-Dn8cSyoI&cl=ffffff" style={{ borderRadius: '10%', display: 'block', margin: '18px auto 0' }} />
+            <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=0QrDbH61H9JzvyMfb4suIgMUwnqTponTI60TKCEM454&co=2d78ad&ct=ffffff" style={{ borderRadius: '10%', display: 'block', margin: '18px auto 0' }} />
         </div>)
 }
 

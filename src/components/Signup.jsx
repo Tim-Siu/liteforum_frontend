@@ -123,7 +123,7 @@ function Signup() {
                         required
                         minLength="6"
                     />
-                    <div id="submitHelp" className="form-text">{error && <p>{error}</p>}</div>
+                    <div id="submitHelp" className="form-text" style={{color: "red"}}>{error && <p>{error}</p>}</div>
 
                 </div>
                 <button type="submit" className="btn btn-primary">Sign Up</button>

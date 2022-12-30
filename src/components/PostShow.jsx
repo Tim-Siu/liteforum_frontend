@@ -22,11 +22,11 @@ const PostShow = () => {
         setComments([...comments, comment]);
     };
 
-    useEffect(() => {
-        if (!token) {
-            navigate('/login');
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!token) {
+    //         navigate('/login');
+    //     }
+    // }, []);
 
     let { id } = useParams();
     useEffect(() => {
@@ -85,6 +85,7 @@ const PostShow = () => {
                         <div>
                             <h6 className="mb-0">Comments</h6>
                             <br />
+                            {comments.length === 0 && <p className="mb-0 opacity-75">No comments yet.</p>}
                             <ul className="list-group list-group-flush">
                                 {comments.map(comment => (<li key={comment.id} className="list-group-item"><div className="mb-0 opacity-75"><strong>{comment.user.name}:</strong> {comment.body} </div> </li>))}
                             </ul>
@@ -95,6 +96,8 @@ const PostShow = () => {
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Set Comment</h6>
+                            <br />
+                            {!token && <p className="mb-0 opacity-75">Log in to create comments.</p>}
 
                             {token && <CommentCreate postId={id} onUpdate={commentUpdate}/>}
                         </div>
