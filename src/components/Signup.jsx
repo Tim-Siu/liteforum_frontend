@@ -47,7 +47,7 @@ function Signup() {
                     };
                     // console.log(newUser);
 
-                    const res = await axios.post('http://localhost:3000/users', newUser);
+                    const res = await axios.post('https://api.timxsy.com/users', newUser);
                     // console.log(res);
                     if (res.data.token) {
                         localStorage.setItem('user_id', res.data.user_id);
@@ -123,7 +123,7 @@ function Signup() {
                         required
                         minLength="6"
                     />
-                    <div id="submitHelp" className="form-text">{error && <p>{error}</p>}</div>
+                    <div id="submitHelp" className="form-text" style={{color: "red"}}>{error && <p>{error}</p>}</div>
 
                 </div>
                 <button type="submit" className="btn btn-primary">Sign Up</button>

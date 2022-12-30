@@ -22,16 +22,16 @@ const PostShow = () => {
         setComments([...comments, comment]);
     };
 
-    useEffect(() => {
-        if (!token) {
-            navigate('/login');
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!token) {
+    //         navigate('/login');
+    //     }
+    // }, []);
 
     let { id } = useParams();
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:3000/posts/${id}`, {
+            const result = await axios.get(`https://api.timxsy.com/posts/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setPost(result.data);
@@ -52,7 +52,7 @@ const PostShow = () => {
                             <br />
                             <p className="mb-0 opacity-75">Author: {user.name}</p>
                         </div>
-                        <small className="opacity-50 text-nowrap">{moment(post.created_at).startOf('hour').fromNow()}</small>
+                        <small className="opacity-50 text-nowrap">{moment(post.created_at).fromNow()}</small>
                     </div>
                 </div>
                 <div className="list-group-item d-flex gap-3 py-3" aria-current="true">
@@ -85,6 +85,7 @@ const PostShow = () => {
                         <div>
                             <h6 className="mb-0">Comments</h6>
                             <br />
+                            {comments.length === 0 && <p className="mb-0 opacity-75">No comments yet.</p>}
                             <ul className="list-group list-group-flush">
                                 {comments.map(comment => (<li key={comment.id} className="list-group-item"><div className="mb-0 opacity-75"><strong>{comment.user.name}:</strong> {comment.body} </div> </li>))}
                             </ul>
@@ -95,6 +96,8 @@ const PostShow = () => {
                     <div className="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 className="mb-0">Set Comment</h6>
+                            <br />
+                            {!token && <p className="mb-0 opacity-75">Log in to create comments.</p>}
 
                             {token && <CommentCreate postId={id} onUpdate={commentUpdate}/>}
                         </div>

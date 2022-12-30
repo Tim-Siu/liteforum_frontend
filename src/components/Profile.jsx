@@ -22,7 +22,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:3000/users/${id}`, {
+            const result = await axios.get(`https://api.timxsy.com/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUser(result.data);
@@ -33,7 +33,7 @@ const Profile = () => {
     }, []);
 
     const handleDeletePost = async (id) => {
-        await axios.delete(`http://localhost:3000/posts/${id}`, {
+        await axios.delete(`https://api.timxsy.com/posts/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newPosts = posts.filter((post) => post.id !== id);
@@ -41,7 +41,7 @@ const Profile = () => {
     };
 
     const handleDeleteComment = async (id) => {
-        await axios.delete(`http://localhost:3000/comments/${id}`, {
+        await axios.delete(`https://api.timxsy.com/comments/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         const newComments = comments.filter((comment) => comment.id !== id);
@@ -86,6 +86,7 @@ const Profile = () => {
                                 <h6 className="mb-0">Posts</h6>
                             </div>
                         </div>
+                        {posts.length === 0 && <p className="mb-0 opacity-75">No posts yet</p>}
                     </div>
                     {posts.map(post => (
                         <>
@@ -112,6 +113,7 @@ const Profile = () => {
                                 <h6 className="mb-0">Comments</h6>
                             </div>
                         </div>
+                        {comments.length === 0 && <p className="mb-0 opacity-75">No comments yet</p>}
                     </div>
                     {comments.map(comment => (
                         <div className="list-group-item list-group-horizontal d-flex gap-3 py-3 py-3" aria-current="true" key={comment.id}>

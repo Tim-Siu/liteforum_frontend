@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import Header from './components/Header';
@@ -22,6 +22,9 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Header />
+        <div>
+          <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=0QrDbH61H9JzvyMfb4suIgMUwnqTponTI60TKCEM454&co=2d78ad&ct=ffffff" style={{ display: 'none' }} />
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

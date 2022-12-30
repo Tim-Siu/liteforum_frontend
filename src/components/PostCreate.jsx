@@ -44,7 +44,7 @@ const PostCreate = () => {
             }
 
             try {
-                const response = await axios.post('http://localhost:3000/posts', postData, {
+                const response = await axios.post('https://api.timxsy.com/posts', postData, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -78,7 +78,7 @@ const PostCreate = () => {
 
                 <div className="mb-3">
                     <label htmlFor="tagInput" className="form-label">Tags</label>
-                    <input type="text" className="form-control" id="tagInput" value={tagInput} onChange={(event) => setTagInput(event.target.value)} /><br />
+                    <input type="text" className="form-control" id="tagInput" value={tagInput} onChange={(event) => setTagInput(event.target.value)} placeholder="Click 'Add Tag' after you typed."/><br />
                     <button type="button" className="btn btn-outline-primary" onClick={handleTagAdd} style={{ marginLeft: '0px', marginTop: '-12px' }} >Add Tag</button>
                     <button type="button" className="btn btn-outline-danger" onClick={handleClearTags} style={{ marginLeft: '5px', marginTop: '-12px' }}>Clear Tags</button><br />
                     {tags.map((tag) => (<button type="button" key={tag} className="btn btn-outline-secondary" style={{ marginRight: '5px', marginTop: '10px' }} >{tag}</button>))}
